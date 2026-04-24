@@ -44,6 +44,7 @@ async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
 
     setError("Signup failed. Please try again.");
     setLoading(false);
+
   } catch (err) {
     setError(err instanceof Error ? err.message : "Unexpected signup error");
     setLoading(false);
