@@ -47,7 +47,7 @@ export function EditClientForm({ client }: { client: Client }) {
     const data = new FormData(e.currentTarget);
     const supabase = createClient();
 
-   const { count, error: updateError } = await supabase
+const { count, error: updateError } = await supabase
   .from("clients")
   .update({
     full_name: data.get("full_name") as string,
@@ -56,7 +56,7 @@ export function EditClientForm({ client }: { client: Client }) {
     notes: (data.get("notes") as string) || null,
   })
   .eq("id", client.id)
-  .select();
+  .select(); 
 
     if (updateError || count === 0) {
       setError(updateError?.message ?? "Update failed. You may not have permission to edit this client.");
