@@ -56,7 +56,7 @@ export function EditClientForm({ client }: { client: Client }) {
         notes:    (data.get("notes") as string)  || null,
       })
       .eq("id", client.id)
-      .select("id", { count: "exact", head: true });
+      ..select("id")
 
     if (updateError || count === 0) {
       setError(updateError?.message ?? "Update failed. You may not have permission to edit this client.");
