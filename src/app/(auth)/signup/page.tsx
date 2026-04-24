@@ -24,10 +24,15 @@ async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     const password = data.get("password") as string;
 
     const supabase = createClient();
+
     const { data: authData, error: authError } = await supabase.auth.signUp({
       email,
       password,
-      options: { data: { full_name: fullName } },
+      options: {
+        data: {
+          full_name: fullName,
+        },
+      },
     });
 
     if (authError) {
@@ -44,7 +49,6 @@ async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
 
     setError("Signup failed. Please try again.");
     setLoading(false);
-
   } catch (err) {
     setError(err instanceof Error ? err.message : "Unexpected signup error");
     setLoading(false);
