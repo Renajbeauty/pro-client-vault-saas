@@ -36,13 +36,14 @@ export default function SignupPage() {
       return;
     }
 
-    if (authData.session) {
-      router.push("/dashboard");
-      return;
-    }
+   if (authData.user) {
+  setSuccess(true);
+  setLoading(false);
+  return;
+}
 
-    setSuccess(true);
-    setLoading(false);
+setError("Signup failed. Please try again.");
+setLoading(false);
   }
 
   if (success) {
