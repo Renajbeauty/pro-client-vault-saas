@@ -55,8 +55,7 @@ const { count, error: updateError } = await supabase
     phone: (data.get("phone") as string) || null,
     notes: (data.get("notes") as string) || null,
   })
-  .eq("id", client.id)
-  .select(); 
+.eq("id", client.id);
 
     if (updateError || count === 0) {
       setError(updateError?.message ?? "Update failed. You may not have permission to edit this client.");
